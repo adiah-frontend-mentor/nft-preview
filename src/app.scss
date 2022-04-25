@@ -1,0 +1,160 @@
+// Breakpoints
+
+// 640px, 1024px, 1400px
+$breakpoints-up: ("medium": "40em", "large": "64em", "xlarge": "87.5em");
+
+@mixin breakpoint-up($size){
+	@media (min-width: map-get($breakpoints-up, $size)) {
+		@content;
+	}
+}
+
+
+// Variables
+
+$mainBg: hsl(217, 54%, 11%);
+$cardBg: hsl(216, 50%, 16%);
+$text: hsl(215, 51%, 70%);
+$cyan: hsl(178, 100%, 50%);
+$overlay: hsla(178, 100%, 50%, 0.482);
+$lineColor: hsl(215, 32%, 27%);
+
+
+.page-wrapper {
+	height: 100%;
+	width: 100%;
+	background-color: $mainBg;
+	padding: 3.875rem 1.5rem;
+	color: $text;
+
+	@include breakpoint-up(medium) {
+		display: flex;
+		justify-content: center;
+		align-items: center;	
+	}
+}
+
+.card-wrapper {
+	max-width: 21.6875rem;
+	height: 100%;
+	padding: 1.5rem;
+	background-color: $cardBg;
+	border-radius: 13px;
+
+	.card-top {
+		width: 17.375rem;
+		height: 17.375rem;
+		margin-bottom: 1.5rem;
+		position: relative;
+
+		@include breakpoint-up(medium) {
+			width: 18.875rem;
+			height: 18.875rem;
+		}
+
+		.overlay {
+			width: 100%;
+			height: 100%;
+			border-radius: 9px;
+			background-color: $overlay;
+			background-repeat: no-repeat;
+			background-position: top 50% left 50%;
+			position: absolute;
+			left: 0;	
+			top: 0;
+			opacity: 0;
+			cursor: pointer;
+			transition: opacity 300ms ease-in-out;
+
+			&:hover {
+				opacity: 1;
+			}
+
+		}
+
+		img {
+			width: 100%;
+			border-radius: 9px;
+			cursor: pointer;
+
+		}
+	}
+
+	.card-body {
+
+		.title {
+			color: white;
+			font-size: 1.375rem;
+			font-weight: 600;
+			margin-bottom: 0.9375rem;
+			cursor: pointer;
+			transition: color 300ms ease-in-out;
+
+			&:hover {
+				color: $cyan;
+			}
+
+			@include breakpoint-up(medium) {
+				margin-bottom: 1.125rem;
+			}
+		}
+
+		.body {
+			line-height: 26px;
+			margin-bottom: 1.125rem;
+
+			@include breakpoint-up(medium) {
+				font-size: 1.125rem;
+				margin-bottom: 1.5625rem;
+			}
+		}
+
+		.stats {
+			display: flex;
+			justify-content: space-between;
+			padding-bottom: 1rem;
+			margin-bottom: 1.25rem;
+			border-bottom: 1px solid $lineColor;
+
+			.detail {
+				display: flex;
+				align-content: center;
+				white-space: nowrap;
+
+				img {
+					margin-right: 6px;
+				}
+			}
+
+			.price {
+				color: $cyan;
+				font-weight: 600;
+			}
+		}
+
+		.footer {
+			display: flex;
+			align-items: center;
+
+			img {
+				width: 2rem;
+				height: 2rem;
+				border: 1px solid white;
+				border-radius: 50%;
+				margin-right: 1rem;
+			}
+
+			p {
+				.name {
+					color: white;
+					cursor: pointer;
+					transition: color 300ms ease-in-out;
+
+					&:hover {
+						color: $cyan;
+					}
+				}
+			}
+		}
+	}
+}
