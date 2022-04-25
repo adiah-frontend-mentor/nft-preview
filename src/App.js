@@ -9,7 +9,7 @@ const Card = ({data}) => {
     return (
         <div className='card-wrapper'>
             <div className='card-top'>
-                <img src={data.img} alt='nft image' />
+                <img src={data.img} alt='nft' />
                 <div className='overlay'
                     style={{backgroundImage: `url(${eye})`}}
                 ></div>
